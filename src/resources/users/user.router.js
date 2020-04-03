@@ -6,7 +6,7 @@ const errors = require('./user.errors');
 
 router.route('/').get(async (req, res) => {
   const users = await usersService.getAll();
-  res.json(users.map(User.toResponse));
+  res.status(200).json(users.map(User.toResponse));
 });
 
 router.route('/:id').get(async (req, res) => {
@@ -14,15 +14,13 @@ router.route('/:id').get(async (req, res) => {
 
   try {
     UserValidator.getUserValidate(id);
+    const user = await usersService.getUser(id);
+    if (user) {
+      return res.json(User.toResponse(user));
+    }
+    return res.status(404).json(errors.USER_NOT_FOUNDED.message);
   } catch (err) {
-    res.status(401).send(err.message);
-  }
-
-  const user = await usersService.getUser(id);
-  if (user) {
-    res.json(User.toResponse(user));
-  } else {
-    res.status(404).send(errors.USER_NOT_FOUNDED.message);
+    return res.status(404).json(err.message);
   }
 });
 
@@ -30,10 +28,11 @@ router.route('/').post(async (req, res) => {
   const userData = req.body;
   try {
     UserValidator.userDataValidate(userData);
-    await usersService.createUser(userData);
-    res.status(200).send(`The user ${userData.name} has been created`);
+    const user = await usersService.createUser(userData);
+    console.log(user);
+    return res.status(200).json(User.toResponse(user));
   } catch (err) {
-    res.status(401).send(err.message);
+    return res.status(401).json(err.message);
   }
 });
 
@@ -43,18 +42,17 @@ router.route('/:id').put(async (req, res) => {
   try {
     UserValidator.getUserValidate(id);
   } catch (error) {
-    res.status(400).send(error.message);
+    return res.status(400).json(error.message);
   }
   try {
     UserValidator.userDataValidate(userData);
     const result = await usersService.updateUser({ userData, id });
     if (result) {
-      res.status(200).send('The user has been updated');
-    } else {
-      res.status(400).send('The user has not been founded');
+      return res.status(200).json('The user has been updated');
     }
+    return res.status(400).json('The user has not been founded');
   } catch (error) {
-    res.status(404).send(error.message);
+    return res.status(404).json(error.message);
   }
 });
 
@@ -64,12 +62,11 @@ router.route('/:id').delete(async (req, res) => {
     UserValidator.getUserValidate(id);
     const result = usersService.deleteUser(id);
     if (result) {
-      res.status(200).send('The user has been deleted');
-    } else {
-      res.status(404).send('User not found');
+      return res.status(200).json('The user has been deleted');
     }
+    return res.status(404).json('User not found');
   } catch (error) {
-    res.status(400).send(error.message);
+    return res.status(400).json(error.message);
   }
 });
 
