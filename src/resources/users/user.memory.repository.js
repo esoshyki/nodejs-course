@@ -21,4 +21,27 @@ const createUser = userData => {
   return;
 };
 
-module.exports = { getAll, getUser, createUser };
+const updateUser = ({ userData, id }) => {
+  const { name, login, password } = userData;
+  const user = new User({ id, name, login, password });
+  const idx = id - 1;
+  if (users[idx]) {
+    users[idx] = user;
+    return true;
+  }
+  return false;
+};
+
+const deleteUser = id => {
+  const idx = id - 1;
+  if (!users[idx]) {
+    return false;
+  }
+  users.splice(idx, 1);
+  users.forEach((el, index) => {
+    el.id = index + 1;
+  });
+  return true;
+};
+
+module.exports = { getAll, getUser, createUser, updateUser, deleteUser };

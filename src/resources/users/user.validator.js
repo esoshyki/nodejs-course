@@ -9,7 +9,7 @@ class UserValidator {
     }
   }
 
-  static createUserValidate({ name, login, password }) {
+  static userDataValidate({ name, login, password }) {
     if (!name || !login || !password) {
       throw errors.INCORRECT_USER_DATA;
     }
