@@ -1,19 +1,16 @@
 const User = require('./user.model');
 
-const users = [];
+const users = [
+  new User({ name: 'first', login: 'safadfa', password: 'fadfafdaf' })
+];
 
-const getAll = async () => {
-  console.log(users);
-  // TODO: mock implementation. should be replaced during task development
-  return users;
-};
+const getAll = async () => users;
 
-const getUser = async id => users[id - 1];
+const getUser = async id => users.find(el => el.id === id);
 
-const createUser = async userData => {
+const createUser = userData => {
   const { name, login, password } = userData;
   const user = new User({
-    id: (users.length + 1).toString(10),
     name,
     login,
     password
@@ -22,26 +19,30 @@ const createUser = async userData => {
   return user;
 };
 
-const updateUser = ({ userData, id }) => {
+const updateUser = async ({ userData, id }) => {
   const { name, login, password } = userData;
-  const user = new User({ id: id.toString(10), name, login, password });
-  const idx = id - 1;
-  if (users[idx]) {
-    users[idx] = user;
-    return true;
-  }
-  return false;
-};
-
-const deleteUser = id => {
-  const idx = id - 1;
-  if (!users[idx]) {
+  const index = users.findIndex(el => {
+    return el.id === id;
+  });
+  if (index === -1) {
     return false;
   }
-  users.splice(idx, 1);
-  users.forEach((el, index) => {
-    el.id = (index + 1).toString(10);
+  const user = new User({ id, name, login, password });
+  users[index] = user;
+  console.log(users);
+  return user;
+};
+
+const deleteUser = async id => {
+  const index = users.findIndex(el => {
+    return el.id === id;
   });
+
+  if (index === -1) {
+    return false;
+  }
+
+  users.splice(index, 1);
   return true;
 };
 

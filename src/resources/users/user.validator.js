@@ -2,7 +2,7 @@ const errors = require('./user.errors');
 
 class UserValidator {
   static getUserValidate(id) {
-    if (!parseInt(id, 10)) {
+    if (typeof id !== 'string') {
       throw errors.BAD_REQUEST;
     } else {
       return;
