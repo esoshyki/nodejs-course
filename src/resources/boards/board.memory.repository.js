@@ -27,4 +27,4 @@ const changeBoard = async ({ newBoardData, id }) => {
   return boards[index];
 };
 
-module.exports = { getAll, createBoard, getById, changeBoard };
+module.exports = { getAll, createBoard, getById, changeBoard, boards };
