@@ -8,7 +8,7 @@ const getAll = async () => users;
 
 const getUser = async id => users.find(el => el.id === id);
 
-const createUser = userData => {
+const createUser = async userData => {
   const { name, login, password } = userData;
   const user = new User({
     name,
@@ -29,7 +29,6 @@ const updateUser = async ({ userData, id }) => {
   }
   const user = new User({ id, name, login, password });
   users[index] = user;
-  console.log(users);
   return user;
 };
 
