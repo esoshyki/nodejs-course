@@ -1,11 +1,14 @@
 const boardRepo = require('./board.memory.repository');
 const BoardValidator = require('./board.validator');
 
-const getAll = () => boardRepo.getAll();
+const getAll = async () => {
+  const boards = await boardRepo.getAll();
+  return { code: 200, body: boards };
+};
 
 const getById = id => boardRepo.getById(id);
 
-const createBoard = async boardData => {
+const createBoard = async ({ boardData }) => {
   const error = BoardValidator.validateBoardData(boardData);
   if (error) {
     return { code: error.statusCode, body: error.message };

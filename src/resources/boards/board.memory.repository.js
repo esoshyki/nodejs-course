@@ -29,7 +29,6 @@ const changeBoard = async ({ newBoardData, id }) => {
 
 const deleteBoard = async ({ boardId }) => {
   const index = boards.findIndex(board => board.id === boardId);
-  console.log(index);
   if (index < 0) {
     return;
   }

@@ -3,8 +3,12 @@ const boardService = require('./board.service');
 const taskService = require('./tasks/task.service');
 
 router.route('/').get(async (req, res) => {
-  const boards = await boardService.getAll();
-  return res.status(200).json(boards);
+  try {
+    const responseData = await boardService.getAll();
+    return res.status(responseData.code).json(responseData.body);
+  } catch (error) {
+    return res.status(520).json(error.message);
+  }
 });
 
 router.route('/:id').get(async (req, res) => {
@@ -14,8 +18,13 @@ router.route('/:id').get(async (req, res) => {
 });
 
 router.route('/').post(async (req, res) => {
-  const resData = await boardService.createBoard(req.body);
-  return res.status(resData.code).json(resData.body);
+  const boardData = req.body;
+  try {
+    const responseData = await boardService.createBoard({ boardData });
+    return res.status(responseData.code).json(responseData.body);
+  } catch (error) {
+    return res.status(520).json(error.message);
+  }
 });
 
 router.route('/:id').put(async (req, res) => {
@@ -53,8 +62,6 @@ router.route('/:boardId/tasks/:id').get(async (req, res) => {
 router.route('/:boardId/tasks/').post(async (req, res) => {
   const boardId = req.params.boardId;
   const taskData = req.body;
-  console.log('taskData');
-  console.log(taskData);
   try {
     const responseData = await taskService.createTask({ boardId, taskData });
     return res.status(responseData.code).json(responseData.body);

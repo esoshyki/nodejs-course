@@ -21,7 +21,6 @@ const createUser = async userData => {
     return { code: error.code, body: error.body };
   }
   const user = await usersRepo.createUser(userData);
-  console.log('user in create user');
   return { code: 200, body: user };
 };
 

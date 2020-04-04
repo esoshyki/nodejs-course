@@ -51,7 +51,12 @@ const deleteAllBoardTasks = async ({ boardId }) => {
 };
 
 const deleteAllUserTasks = ({ userId }) => {
-  tasks = [...tasks].filter(task => task.userId !== userId);
+  tasks = [...tasks].map(task => {
+    if (task.userId === userId) {
+      task.userId = null;
+    }
+    return task;
+  });
   return;
 };
 
