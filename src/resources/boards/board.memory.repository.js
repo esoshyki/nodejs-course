@@ -1,12 +1,12 @@
 const Board = require('./board.model');
 const errors = require('../errors');
+const taskRepo = require('./tasks/task.memory.repository');
 
 const boards = [];
 
 const getAll = async () => boards;
 
 const getById = async id => {
-  console.log(id);
   const board = boards.find(el => el.id === id);
   if (board) {
     return { code: 200, body: board };
@@ -27,4 +27,22 @@ const changeBoard = async ({ newBoardData, id }) => {
   return boards[index];
 };
 
-module.exports = { getAll, createBoard, getById, changeBoard, boards };
+const deleteBoard = async ({ boardId }) => {
+  const index = boards.findIndex(board => board.id === boardId);
+  console.log(index);
+  if (index < 0) {
+    return;
+  }
+  boards.splice(index, 1);
+  taskRepo.deleteAllBoardTasks({ boardId });
+  return boards;
+};
+
+module.exports = {
+  getAll,
+  createBoard,
+  getById,
+  changeBoard,
+  boards,
+  deleteBoard
+};

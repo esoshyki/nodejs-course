@@ -23,4 +23,9 @@ const changeBoard = ({ newBoardData, id }) => {
   return { code: 200, body: board };
 };
 
-module.exports = { getAll, createBoard, getById, changeBoard };
+const deleteBoard = async ({ boardId }) => {
+  const boards = await boardRepo.deleteBoard({ boardId });
+  return { code: 200, body: boards };
+};
+
+module.exports = { getAll, createBoard, getById, changeBoard, deleteBoard };

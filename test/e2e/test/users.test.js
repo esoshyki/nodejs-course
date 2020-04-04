@@ -103,8 +103,6 @@ describe('Users suite', () => {
       // eslint-disable-next-line no-unused-vars
       const { password, ...expectedUser } = updatedUser;
 
-      console.log(expectedUser);
-
       await request
         .get(routes.users.getById(userId))
         .set('Accept', 'application/json')

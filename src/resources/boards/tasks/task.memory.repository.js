@@ -1,18 +1,66 @@
 const Task = require('./task.model');
 
-const tasks = {};
+let tasks = [];
 
-const getAll = boardId => tasks[boardId];
+const getAll = async boardId => {
+  const filtredTasks = tasks.filter(task => task.boardId === boardId);
+  return filtredTasks;
+};
 
-const createTask = ({ boardId, taskData }) => {
-  const newTask = new Task(taskData);
-  console.log(newTask);
-  if (tasks[boardId]) {
-    tasks.boardId.push(newTask);
-  } else {
-    tasks.boardId = [newTask];
-  }
+const getTaskById = async ({ boardId, taskId }) => {
+  const task = tasks
+    .filter(el => el.boardId === boardId)
+    .find(elem => elem.id === taskId);
+  return task;
+};
+
+const createTask = async ({ boardId, taskData }) => {
+  const newTask = new Task({ ...taskData, boardId });
+  tasks.push(newTask);
   return newTask;
 };
 
-module.exports = { getAll, createTask };
+const updateTask = async ({ boardId, taskId, taskData }) => {
+  const index = tasks.findIndex(
+    task => task.boardId === boardId && task.id === taskId
+  );
+  if (index < 0) {
+    return;
+  }
+  const newTask = new Task(taskData);
+  newTask.id = taskId;
+  newTask.boardId = boardId;
+  tasks[index] = newTask;
+  return newTask;
+};
+
+const deleteTask = async ({ boardId, taskId }) => {
+  const index = tasks.findIndex(
+    task => task.boardId === boardId && task.id === taskId
+  );
+  if (index < 0) {
+    return;
+  }
+  tasks.splice(index, 1);
+  return tasks;
+};
+
+const deleteAllBoardTasks = async ({ boardId }) => {
+  tasks = [...tasks].filter(task => task.boardId !== boardId);
+  return;
+};
+
+const deleteAllUserTasks = ({ userId }) => {
+  tasks = [...tasks].filter(task => task.userId !== userId);
+  return;
+};
+
+module.exports = {
+  getAll,
+  createTask,
+  getTaskById,
+  updateTask,
+  deleteTask,
+  deleteAllBoardTasks,
+  deleteAllUserTasks
+};

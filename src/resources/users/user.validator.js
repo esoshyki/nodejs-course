@@ -1,20 +1,21 @@
-const errors = require('./user.errors');
+const errors = require('../errors');
 
-class UserValidator {
-  static getUserValidate(id) {
-    if (typeof id !== 'string') {
-      throw errors.BAD_REQUEST;
-    } else {
-      return;
-    }
+const validateUserId = async userId => {
+  if (typeof userId !== 'string') {
+    return {
+      code: errors.INCORRECT_USER_DATA.statusCode,
+      body: errors.INCORRECT_USER_DATA.message
+    };
   }
+};
 
-  static userDataValidate({ name, login, password }) {
-    if (!name || !login || !password) {
-      throw errors.INCORRECT_USER_DATA;
-    }
-    return;
+const validateUserData = async ({ name, login, password }) => {
+  if (!name || !login || !password) {
+    return {
+      code: errors.INCORRECT_USER_DATA.statusCode,
+      body: errors.INCORRECT_USER_DATA.message
+    };
   }
-}
+};
 
-module.exports = UserValidator;
+module.exports = { validateUserId, validateUserData };
