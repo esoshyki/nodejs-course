@@ -13,7 +13,7 @@ router.route('/').get(async (req, res) => {
 router.route('/:id').get(async (req, res) => {
   const { id } = req.params;
   try {
-    const responesData = await usersService.getUser(id);
+    const responesData = await usersService.getUser({ id });
     return res.status(responesData.code).json(responesData.body);
   } catch (error) {
     return res.status(520).json(error.message);
@@ -22,12 +22,8 @@ router.route('/:id').get(async (req, res) => {
 
 router.route('/').post(async (req, res) => {
   const userData = req.body;
-  try {
-    const responesData = await usersService.createUser(userData);
-    return res.status(responesData.code).json(responesData.body);
-  } catch (error) {
-    return res.status(520).json(error.message);
-  }
+  const responesData = await usersService.createUser(userData);
+  return res.status(responesData.code).json(responesData.body);
 });
 
 router.route('/:id').put(async (req, res) => {

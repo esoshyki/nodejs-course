@@ -7,7 +7,7 @@ const getAll = async () => {
   return { code: 200, body: users };
 };
 
-const getUser = async id => {
+const getUser = async ({ id }) => {
   const user = await usersRepo.getUser(id);
   if (user) {
     return { code: 200, body: user };
