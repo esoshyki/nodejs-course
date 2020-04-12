@@ -29,6 +29,7 @@ class Logger {
   }
 
   logError(message) {
+    winston.info(`Erros: ${message}`);
     winston.error(`Error: ${message}`);
   }
 }
