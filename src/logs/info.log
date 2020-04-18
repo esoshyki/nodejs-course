@@ -1,1 +1,84 @@
 {"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"16-04-2020 08:11:39"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:43:59"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:44:48"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:45:14"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:46:43"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:46:47"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:47:16"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:47:18"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:49:38"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:49:41"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:50:35"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:50:39"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:53:36"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:53:40"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:55:33"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:55:38"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:56:13"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:56:22"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:57:18"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:57:44"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 10:58:34"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:59:01"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:17:13"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:22:22"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:23:09"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:23:39"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:24:12"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:24:16"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:24:57"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:25:54"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:29:13"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:30:03"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:30:16"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:31:41"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:32:11"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:37:02"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:39:19"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 11:48:32"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 11:51:06"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 11:51:28"}
+{"url":"/users","body":{"name":"newUser","login":"newUser","password":"password"},"method":"POST","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 11:56:37"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 11:58:31"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:02:57"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:05:02"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:06:10"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:07:44"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:08:13"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:11:04"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:11:04"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:11:17"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:11:17"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:11:58"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:11:59"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:13:31"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:13:32"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:18:09"}
+{"url":"/users","body":{"name":"newNewUser","login":"newNewUser","password":"password"},"method":"POST","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:25:07"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:25:15"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:30:07"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:30:08"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:30:49"}
+{"url":"/users/dsadsad","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:30:57"}
+{"url":"/users/dsadsad","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:31:41"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:32:30"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:32:37"}
+{"url":"/users/5e9ac0c52f90053ad0224d2h","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:32:42"}
+{"url":"/users/5e9ac0c52f90053ad0224d2h","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:35:20"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:41:37"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{"name":"string","login":"string","password":"string"},"method":"PUT","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:41:53"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{"name":"string","login":"string","password":"string"},"method":"PUT","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:42:36"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:42:37"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{"name":"string","login":"string","password":"string"},"method":"PUT","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:45:21"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:45:21"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{"name":"string","login":"string","password":"string"},"method":"PUT","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:47:19"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:47:19"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{"name":"string","login":"string","password":"string"},"method":"PUT","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:48:05"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:48:10"}
+{"url":"/users/5e9ac0c52f90053ad0224d2e","body":{},"method":"DELETE","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:52:45"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:52:50"}
+{"url":"/users/5e9ac0c52f90053ad0224d3e","body":{},"method":"DELETE","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:52:59"}
+{"url":"/users/5e9ac0c52f90053ad0224d3e","body":{},"method":"DELETE","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:53:02"}
+{"url":"/users","body":{},"method":"GET","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:53:16"}
+{"url":"/users/5e9ac0c52f90053ad0224d3e","body":{},"method":"DELETE","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:53:19"}
+{"url":"/users/5e9ac0c52f90053ad0224d3e","body":{},"method":"DELETE","query":{},"level":"info","message":"info logger","label":"server.js","timestamp":"18-04-2020 12:54:51"}
