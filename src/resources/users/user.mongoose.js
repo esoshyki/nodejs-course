@@ -52,14 +52,17 @@ const getUserById = async ({ id, res }) => {
 };
 
 const updateUser = async ({ userData, id, res }) => {
-  User.replaceOne({ _id: id }, userData, err => {
+  User.replaceOne({ _id: id }, userData, (err, raw) => {
+    const { nModified } = raw;
     if (err) {
       const error = errors[err.name];
       return error
         ? res.status(error.statusCode).json(error.message)
         : res.status(500).json(err.message);
     }
-    return res.status(200).json('User has been updated');
+    return nModified > 0
+      ? res.status(200).json('User has been updated')
+      : res.status(400).json('Bad request');
   });
 };
 

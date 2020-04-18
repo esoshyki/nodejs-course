@@ -32,3 +32,4 @@
 {"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:42:37"}
 {"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:45:21"}
 {"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:47:19"}
+{"message":"uncaughtExceptionboard is not defined","level":"error","label":"server.js","timestamp":"18-04-2020 15:52:49"}
