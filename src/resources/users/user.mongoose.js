@@ -13,6 +13,13 @@ const userSchema = new mongoose.Schema({
   password: 'string'
 });
 
+userSchema.method('transform', function transform() {
+  const obj = this.toObject();
+  obj.id = obj._id;
+  delete obj._id;
+  return obj;
+});
+
 const User = mongoose.model('User', userSchema);
 
 const toResponse = user => {
@@ -53,13 +60,13 @@ const getUserById = async ({ id, res }) => {
 
 const updateUser = async ({ userData, id, res }) => {
   User.replaceOne({ _id: id }, userData, (err, raw) => {
-    const { nModified } = raw;
     if (err) {
       const error = errors[err.name];
       return error
         ? res.status(error.statusCode).json(error.message)
         : res.status(500).json(err.message);
     }
+    const { nModified } = raw;
     return nModified > 0
       ? res.status(200).json('User has been updated')
       : res.status(400).json('Bad request');

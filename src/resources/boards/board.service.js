@@ -8,7 +8,7 @@ const getAll = async ({ res }) => {
 const createBoard = async ({ boardData, res }) => {
   const error = BoardValidator.validateBoardData(boardData);
   if (error) {
-    return { code: error.statusCode, body: error.message };
+    return res.status(error.statusCode).json(error.message);
   }
   return await boardsMongoose.createBoard({ boardData, res });
 };
@@ -20,7 +20,7 @@ const getBoardById = async ({ id, res }) => {
 const updateBoard = async ({ boardData, id, res }) => {
   const error = BoardValidator.validateBoardData(boardData);
   if (error) {
-    return { code: error.statusCode, body: error.message };
+    return res.status(error.statusCode).json(error.message);
   }
   return await boardsMongoose.updateBoard({ boardData, id, res });
 };

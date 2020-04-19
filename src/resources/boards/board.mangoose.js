@@ -1,9 +1,16 @@
 const mongoose = require('mongoose');
 
-const boardSchema = {
+const boardSchema = new mongoose.Schema({
   title: String,
   columns: Array
-};
+});
+
+boardSchema.method('transform', function transform() {
+  const obj = this.toObject();
+  obj.id = obj._id;
+  delete obj._id;
+  return obj;
+});
 
 const errors = {
   CastError: {
@@ -46,13 +53,13 @@ const getBoardById = async ({ id, res }) => {
 
 const updateBoard = async ({ boardData, id, res }) => {
   Board.replaceOne({ _id: id }, boardData, (err, raw) => {
-    const { nModified } = raw;
     if (err) {
       const error = errors[err.name];
       return error
         ? res.status(error.statusCode).json(error.message)
         : res.status(500).json(err.message);
     }
+    const { nModified } = raw;
     return nModified > 0
       ? res.status(200).json('Board has been updated')
       : res.status(400).json('Bad request');
