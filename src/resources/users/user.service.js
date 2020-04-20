@@ -1,6 +1,5 @@
 const userValidator = require('./user.validator');
 const userMongoose = require('./user.mongoose');
-const taskMongoose = require('../boards/tasks/task.mongoose');
 
 const getAll = async res => await userMongoose.getAll(res);
 
@@ -25,11 +24,6 @@ const updateUser = async ({ userData, id, res }) => {
 };
 
 const deleteUser = async ({ id, res }) => {
-  try {
-    await taskMongoose.deleteAllUserTasks({ userId: id });
-  } catch (err) {
-    return res.status(500).json(err.message);
-  }
   const error = await userValidator.validateUserId(id);
   if (error) {
     return res.status(error.code).json(error.body);

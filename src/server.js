@@ -12,8 +12,6 @@ const mongooseOptions = {
 
 const mongoString = process.env.MONGO_CONNECTION_STRING;
 
-console.log(mongoString);
-
 mongoose
   .connect(mongoString, mongooseOptions)
   .then(() => console.log('MongoDB connected.'))

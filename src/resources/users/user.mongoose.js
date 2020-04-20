@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const taskMongoose = require('../boards/tasks/task.mongoose');
 
 const errors = {
   CastError: {
@@ -13,18 +14,11 @@ const userSchema = new mongoose.Schema({
   password: 'string'
 });
 
-userSchema.method('transform', function transform() {
-  const obj = this.toObject();
-  obj.id = obj._id;
-  delete obj._id;
-  return obj;
-});
-
 const User = mongoose.model('User', userSchema);
 
 const toResponse = user => {
-  const { id, name, login } = user;
-  return { id, name, login };
+  const { _id, name, login } = user;
+  return { id: _id, name, login };
 };
 
 const getAll = async res => {
@@ -38,11 +32,12 @@ const getAll = async res => {
 
 const createUser = async ({ userData, res }) => {
   const newUser = new User(userData);
-  newUser.save(err => {
+  newUser.save((err, product) => {
     if (err) {
       return res.status(500).json(err.message);
     }
-    return res.status(200).json('User has been created');
+    console.log(product ? toResponse(product) : product);
+    return res.status(200).json(toResponse(product));
   });
 };
 
@@ -74,7 +69,8 @@ const updateUser = async ({ userData, id, res }) => {
 };
 
 const deleteUser = async ({ id, res }) => {
-  User.deleteOne({ _id: id }, (err, query) => {
+  await taskMongoose.unassignAllUserTasks({ userId: id });
+  User.deleteMany({ _id: id }, (err, query) => {
     if (err) {
       const error = errors[err.name];
       return error

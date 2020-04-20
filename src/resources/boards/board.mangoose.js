@@ -1,15 +1,9 @@
 const mongoose = require('mongoose');
+const taskMongoose = require('./tasks/task.mongoose');
 
 const boardSchema = new mongoose.Schema({
   title: String,
   columns: Array
-});
-
-boardSchema.method('transform', function transform() {
-  const obj = this.toObject();
-  obj.id = obj._id;
-  delete obj._id;
-  return obj;
 });
 
 const errors = {
@@ -19,6 +13,11 @@ const errors = {
   }
 };
 
+const toResponse = board => {
+  const { _id, title, columns } = board;
+  return { title, id: _id, columns };
+};
+
 const Board = mongoose.model('Board', boardSchema);
 
 const getAll = async ({ res }) => {
@@ -26,17 +25,18 @@ const getAll = async ({ res }) => {
     if (err) {
       return res.status(500).json(err.message);
     }
-    return res.status(200).json(boards);
+    return res.status(200).json(boards.map(board => toResponse(board)));
   });
 };
 
 const createBoard = async ({ boardData, res }) => {
   const newBoard = new Board(boardData);
-  newBoard.save(err => {
+  newBoard.save((err, board) => {
     if (err) {
       return res.status(500).json(err.message);
     }
-    return res.status(200).json('Board has been created');
+    const { _doc } = board;
+    return res.status(200).json(toResponse(_doc));
   });
 };
 
@@ -46,7 +46,7 @@ const getBoardById = async ({ id, res }) => {
       return res.status(500).json(err.message);
     }
     return board
-      ? res.status(200).json(board)
+      ? res.status(200).json(toResponse(board))
       : res.status(404).json('Board not found');
   });
 };
@@ -61,13 +61,14 @@ const updateBoard = async ({ boardData, id, res }) => {
     }
     const { nModified } = raw;
     return nModified > 0
-      ? res.status(200).json('Board has been updated')
+      ? res.status(200).json(toResponse(boardData))
       : res.status(400).json('Bad request');
   });
 };
 
 const deleteBoard = async ({ id, res }) => {
-  Board.deleteOne({ _id: id }, (err, query) => {
+  await taskMongoose.deleteAllBoardTasks({ boardId: id });
+  Board.deleteMany({ _id: id }, (err, query) => {
     if (err) {
       const error = errors[err.name];
       return error

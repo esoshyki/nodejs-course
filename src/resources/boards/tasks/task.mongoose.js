@@ -9,12 +9,10 @@ const taskSchema = new mongoose.Schema({
   boardId: String
 });
 
-taskSchema.method('transform', function transform() {
-  const obj = this.toObject();
-  obj.id = obj._id;
-  delete obj._id;
-  return obj;
-});
+const toResponse = task => {
+  const { title, order, description, columnId, userId, boardId, _id } = task;
+  return { title, order, description, columnId, userId, boardId, id: _id };
+};
 
 const Task = mongoose.model('Task', taskSchema);
 
@@ -23,17 +21,17 @@ const getAll = async ({ boardId, res }) => {
     if (err) {
       return res.status(500).json(err.message);
     }
-    return res.status(200).json(tasks);
+    return res.status(200).json(tasks.map(task => toResponse(task)));
   });
 };
 
 const createTask = async ({ boardId, taskData, res }) => {
   const newTask = new Task({ ...taskData, boardId });
-  newTask.save(err => {
+  newTask.save((err, product) => {
     if (err) {
       return res.status(520).json(err.message);
     }
-    return res.status(200).json('The task has been created.');
+    return res.status(200).json(toResponse(product));
   });
 };
 
@@ -42,7 +40,9 @@ const getTaskById = async ({ boardId, taskId, res }) => {
     if (err) {
       return res.status(500).json(err.message);
     }
-    return res.status(200).json(task);
+    return task.length > 0
+      ? res.status(200).json(toResponse(task[0]))
+      : res.status(404).json('Not found');
   });
 };
 
@@ -59,19 +59,29 @@ const updateTask = async ({ boardId, taskId, taskData, res }) => {
 };
 
 const deleteTask = async ({ boardId, taskId, res }) => {
-  Task.deleteOne({ _id: taskId, boardId }, (err, query) => {
+  Task.deleteMany({ _id: taskId, boardId }, (err, query) => {
     if (err) {
       return res.status(500).json(err.message);
     }
     const { deletedCount } = query;
     return deletedCount > 0
-      ? res.status(200).json('Task has been deleted')
+      ? res.status(204).json('Task has been deleted')
       : res.status(404).json('Task not found');
   });
 };
 
-const deleteAllUserTasks = async ({ userId }) => {
-  Task.deleteMany({ userId }, (err, query) => {
+const unassignAllUserTasks = async ({ userId }) => {
+  Task.updateMany({ userId }, { userId: null }, (err, query) => {
+    if (err) {
+      throw err;
+    }
+    const { deletedCount } = query;
+    return deletedCount;
+  });
+};
+
+const deleteAllBoardTasks = async ({ boardId }) => {
+  Task.deleteMany({ boardId }, (err, query) => {
     if (err) {
       throw err;
     }
@@ -86,5 +96,6 @@ module.exports = {
   getTaskById,
   updateTask,
   deleteTask,
-  deleteAllUserTasks
+  unassignAllUserTasks,
+  deleteAllBoardTasks
 };

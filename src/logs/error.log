@@ -38,3 +38,6 @@
 {"message":"uncaughtExceptionquery is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 09:41:10"}
 {"message":"uncaughtExceptionCast to ObjectId failed for value \"undefined\" at path \"userId\" for model \"Task\"","level":"error","label":"server.js","timestamp":"19-04-2020 09:43:11"}
 {"message":"uncaughtExceptionid is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 21:03:15"}
+{"message":"uncaughtExceptionCannot destructure property `_doc` of 'undefined' or 'null'.","level":"error","label":"server.js","timestamp":"19-04-2020 21:35:52"}
+{"message":"uncaughtExceptionCannot read property '_id' of null","level":"error","label":"server.js","timestamp":"19-04-2020 21:45:37"}
+{"message":"uncaughtException_id is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 21:48:30"}
