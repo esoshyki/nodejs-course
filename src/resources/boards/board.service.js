@@ -1,34 +1,38 @@
-const boardRepo = require('./board.memory.repository');
 const BoardValidator = require('./board.validator');
+const boardsMongoose = require('./board.mangoose');
 
-const getAll = async () => {
-  const boards = await boardRepo.getAll();
-  return { code: 200, body: boards };
+const getAll = async ({ res }) => {
+  return await boardsMongoose.getAll({ res });
 };
 
-const getById = id => boardRepo.getById(id);
-
-const createBoard = async ({ boardData }) => {
+const createBoard = async ({ boardData, res }) => {
   const error = BoardValidator.validateBoardData(boardData);
   if (error) {
-    return { code: error.statusCode, body: error.message };
+    return res.status(error.statusCode).json(error.message);
   }
-  const board = await boardRepo.createBoard({ boardData });
-  return { code: 200, body: board };
+  return await boardsMongoose.createBoard({ boardData, res });
 };
 
-const changeBoard = ({ newBoardData, id }) => {
-  const error = BoardValidator.validateBoardData(newBoardData);
+const getBoardById = async ({ id, res }) => {
+  return await boardsMongoose.getBoardById({ id, res });
+};
+
+const updateBoard = async ({ boardData, id, res }) => {
+  const error = BoardValidator.validateBoardData(boardData);
   if (error) {
-    return { code: error.statusCode, body: error.message };
+    return res.status(error.statusCode).json(error.message);
   }
-  const board = boardRepo.changeBoard({ newBoardData, id });
-  return { code: 200, body: board };
+  return await boardsMongoose.updateBoard({ boardData, id, res });
 };
 
-const deleteBoard = async ({ boardId }) => {
-  const boards = await boardRepo.deleteBoard({ boardId });
-  return { code: 200, body: boards };
+const deleteBoard = async ({ id, res }) => {
+  return await boardsMongoose.deleteBoard({ id, res });
 };
 
-module.exports = { getAll, createBoard, getById, changeBoard, deleteBoard };
+module.exports = {
+  getAll,
+  createBoard,
+  getBoardById,
+  updateBoard,
+  deleteBoard
+};

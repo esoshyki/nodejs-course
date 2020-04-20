@@ -1,46 +1,34 @@
-const usersRepo = require('./user.memory.repository');
 const userValidator = require('./user.validator');
-const tasksRepo = require('../boards/tasks/task.memory.repository');
+const userMongoose = require('./user.mongoose');
 
-const getAll = async () => {
-  const users = await usersRepo.getAll();
-  return { code: 200, body: users };
-};
+const getAll = async res => await userMongoose.getAll(res);
 
-const getUser = async ({ id }) => {
-  const user = await usersRepo.getUser(id);
-  if (user) {
-    return { code: 200, body: user };
-  }
-  return { code: 404, body: 'USER_NOT_FOUND' };
-};
-
-const createUser = async userData => {
+const createUser = async ({ userData, res }) => {
   const error = await userValidator.validateUserData(userData);
   if (error) {
-    return { code: error.code, body: error.body };
+    return res.status(error.code).json(error.body);
   }
-  const user = await usersRepo.createUser(userData);
-  return { code: 200, body: user };
+  return await userMongoose.createUser({ userData, res });
 };
 
-const updateUser = async ({ userData, id }) => {
+const getUser = async ({ id, res }) => {
+  return await userMongoose.getUserById({ id, res });
+};
+
+const updateUser = async ({ userData, id, res }) => {
   const error = await userValidator.validateUserData(userData);
   if (error) {
-    return { code: error.code, body: error.body };
+    return res.status(error.code).json(error.body);
   }
-  const user = usersRepo.updateUser({ userData, id });
-  return { code: 200, body: user };
+  return await userMongoose.updateUser({ userData, id, res });
 };
 
-const deleteUser = async id => {
-  await tasksRepo.deleteAllUserTasks({ userId: id });
+const deleteUser = async ({ id, res }) => {
   const error = await userValidator.validateUserId(id);
   if (error) {
-    return { code: error.code, body: error.body };
+    return res.status(error.code).json(error.body);
   }
-  const users = await usersRepo.deleteUser(id);
-  return { code: 200, body: users };
+  return await userMongoose.deleteUser({ id, res });
 };
 
 module.exports = { getAll, getUser, createUser, updateUser, deleteUser };

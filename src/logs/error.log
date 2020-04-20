@@ -1,0 +1,43 @@
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:43:59"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:44:48"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:46:43"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:47:16"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:49:38"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:50:35"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:53:36"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:55:33"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:56:13"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:57:44"}
+{"message":"unhandledRejection Internal ErrorInternal Error","statusCode":500,"level":"error","label":"server.js","timestamp":"18-04-2020 10:59:01"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:17:13"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:22:22"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:23:09"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:23:39"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:24:12"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:24:16"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:24:57"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:25:54"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:29:13"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:30:03"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:30:16"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:31:41"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:32:11"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:37:02"}
+{"message":"Database connection error","level":"error","label":"server.js","timestamp":"18-04-2020 11:39:19"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:11:04"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:11:17"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:11:59"}
+{"message":"uncaughtExceptionres.status is not a function","level":"error","label":"server.js","timestamp":"18-04-2020 12:13:32"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:30:08"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:42:37"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:45:21"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"18-04-2020 12:47:19"}
+{"message":"uncaughtExceptionboard is not defined","level":"error","label":"server.js","timestamp":"18-04-2020 15:52:49"}
+{"message":"uncaughtExceptionCannot read property 'status' of undefined","level":"error","label":"server.js","timestamp":"19-04-2020 08:42:26"}
+{"message":"uncaughtExceptionCannot destructure property `nModified` of 'undefined' or 'null'.","level":"error","label":"server.js","timestamp":"19-04-2020 09:35:34"}
+{"message":"uncaughtExceptionquery is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 09:41:10"}
+{"message":"uncaughtExceptionCast to ObjectId failed for value \"undefined\" at path \"userId\" for model \"Task\"","level":"error","label":"server.js","timestamp":"19-04-2020 09:43:11"}
+{"message":"uncaughtExceptionid is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 21:03:15"}
+{"message":"uncaughtExceptionCannot destructure property `_doc` of 'undefined' or 'null'.","level":"error","label":"server.js","timestamp":"19-04-2020 21:35:52"}
+{"message":"uncaughtExceptionCannot read property '_id' of null","level":"error","label":"server.js","timestamp":"19-04-2020 21:45:37"}
+{"message":"uncaughtException_id is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 21:48:30"}

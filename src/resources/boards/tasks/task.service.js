@@ -1,48 +1,32 @@
-const tasksRepo = require('./task.memory.repository');
 const taskValidator = require('./task.validator');
-const errors = require('../../errors');
+const taskMongoose = require('./task.mongoose');
 
-const getAll = async boardId => {
-  try {
-    const tasks = await tasksRepo.getAll(boardId);
-    return { code: 200, body: tasks };
-  } catch (err) {
-    return { code: 400, body: err.message };
-  }
+const getAll = async ({ boardId, res }) => {
+  return await taskMongoose.getAll({ boardId, res });
 };
 
-const getTaskById = async ({ boardId, taskId }) => {
-  const task = await tasksRepo.getTaskById({ boardId, taskId });
-  if (task) {
-    return { code: 200, body: task };
-  }
-  return {
-    code: errors.TASK_NOT_FOUND.statusCode,
-    body: errors.TASK_NOT_FOUND.message
-  };
+const getTaskById = async ({ boardId, taskId, res }) => {
+  return await taskMongoose.getTaskById({ boardId, taskId, res });
 };
 
-const createTask = async ({ boardId, taskData }) => {
+const createTask = async ({ boardId, taskData, res }) => {
   const error = await taskValidator.checkTaskData({ taskData });
   if (error) {
-    return { code: error.code, body: error.body };
+    return res.status(error.statusCode).json(error.message);
   }
-  const task = await tasksRepo.createTask({ boardId, taskData });
-  return { code: 200, body: task };
+  return await taskMongoose.createTask({ boardId, taskData, res });
 };
 
-const updateTask = async ({ boardId, taskId, taskData }) => {
+const updateTask = async ({ boardId, taskId, taskData, res }) => {
   const error = await taskValidator.checkTaskData({ taskData });
   if (error) {
-    return { code: error.code, body: error.body };
+    return res.status(error.statusCode).json(error.message);
   }
-  const task = await tasksRepo.updateTask({ boardId, taskId, taskData });
-  return { code: 200, body: task };
+  return await taskMongoose.updateTask({ boardId, taskId, taskData, res });
 };
 
-const deleteTask = async ({ boardId, taskId }) => {
-  const tasks = await tasksRepo.deleteTask({ boardId, taskId });
-  return { code: 200, body: tasks };
+const deleteTask = async ({ boardId, taskId, res }) => {
+  return await taskMongoose.deleteTask({ boardId, taskId, res });
 };
 
 module.exports = { getAll, createTask, getTaskById, updateTask, deleteTask };

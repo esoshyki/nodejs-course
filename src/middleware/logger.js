@@ -1,37 +1,28 @@
-const { createLogger, format, transports } = require('winston');
-const appRoot = require('app-root-path');
+const logger = require('../common/winston.config');
 
-const winston = createLogger({
-  level: 'silly',
-  format: format.combine(format.colorize(), format.cli()),
-  transports: [
-    new transports.Console(),
-    new transports.File({
-      filename: `${appRoot}/logs/error.log`,
-      level: 'error',
-      format: format.combine(format.uncolorize(), format.json())
-    }),
-    new transports.File({
-      filename: `${appRoot}/logs/info.log`,
-      level: 'info',
-      format: format.combine(format.uncolorize(), format.json())
-    })
-  ]
-});
+const infoLogMiddleWare = (req, res, next) => {
+  const { url, body, method, query } = req;
+  logger.info('info logger', {
+    url,
+    body,
+    method,
+    query
+  });
+  next();
+};
 
-class Logger {
-  logInfo({ method, url, params, body }) {
-    winston.info(
-      `Method: ${method}; url: ${url}; params: ${JSON.stringify(
-        params
-      )}; body: ${JSON.stringify(body)}`
-    );
-  }
+const errorLogMiddleWare = (err, req, res, next) => {
+  const { message, statusCode } = err;
+  const { method, body } = req;
+  res.status(500).send(message);
+  logger.error('Error', {
+    message,
+    statusCode,
+    method,
+    body
+  });
+  infoLogMiddleWare(req, res, next);
+  next();
+};
 
-  logError(message) {
-    winston.info(`Erros: ${message}`);
-    winston.error(`Error: ${message}`);
-  }
-}
-
-module.exports = Logger;
+module.exports = { infoLogMiddleWare, errorLogMiddleWare };
