@@ -41,3 +41,12 @@
 {"message":"uncaughtExceptionCannot destructure property `_doc` of 'undefined' or 'null'.","level":"error","label":"server.js","timestamp":"19-04-2020 21:35:52"}
 {"message":"uncaughtExceptionCannot read property '_id' of null","level":"error","label":"server.js","timestamp":"19-04-2020 21:45:37"}
 {"message":"uncaughtException_id is not defined","level":"error","label":"server.js","timestamp":"19-04-2020 21:48:30"}
+{"message":"uncaughtExceptiondata is not defined","level":"error","label":"server.js","timestamp":"23-04-2020 21:32:55"}
+{"message":"uncaughtExceptiondata and hash arguments required","level":"error","label":"server.js","timestamp":"23-04-2020 21:33:59"}
+{"message":"uncaughtExceptiondata and hash arguments required","level":"error","label":"server.js","timestamp":"23-04-2020 21:35:56"}
+{"message":"uncaughtExceptiondata and hash arguments required","level":"error","label":"server.js","timestamp":"23-04-2020 21:39:09"}
+{"message":"uncaughtExceptiondata and hash arguments required","level":"error","label":"server.js","timestamp":"23-04-2020 21:40:17"}
+{"message":"uncaughtExceptiondata and hash arguments required","level":"error","label":"server.js","timestamp":"23-04-2020 21:41:37"}
+{"message":"uncaughtExceptiondata and hash arguments required","level":"error","label":"server.js","timestamp":"23-04-2020 21:45:19"}
+{"message":"uncaughtExceptioncallback is not a function","level":"error","label":"server.js","timestamp":"23-04-2020 21:47:30"}
+{"message":"uncaughtExceptioncallback is not a function","level":"error","label":"server.js","timestamp":"23-04-2020 21:49:40"}

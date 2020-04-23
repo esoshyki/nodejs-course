@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const taskMongoose = require('../boards/tasks/task.mongoose');
+const bcrypt = require('bcrypt');
 
 const errors = {
   CastError: {
@@ -8,11 +9,39 @@ const errors = {
   }
 };
 
-const userSchema = new mongoose.Schema({
-  name: 'string',
-  login: 'string',
-  password: 'string'
+const saltRounds = 10;
+
+const userSchema = new mongoose.Schema(
+  {
+    name: 'string',
+    login: 'string',
+    password: 'string'
+  },
+  { versionKey: false }
+);
+
+userSchema.pre('save', async function save(next) {
+  if (!this.isModified('password')) return next();
+  try {
+    const salt = await bcrypt.genSalt(saltRounds);
+    this.password = await bcrypt.hash(this.password, salt);
+    return next();
+  } catch (err) {
+    return next(err);
+  }
 });
+
+userSchema.methods.validatePassword = async function validate(data, callback) {
+  console.log(data);
+  console.log(this.password);
+  bcrypt.compare(data, this.password, (err, res) => {
+    if (err) {
+      throw err;
+    } else {
+      return callback(res);
+    }
+  });
+};
 
 const User = mongoose.model('User', userSchema);
 
@@ -85,4 +114,11 @@ const deleteUser = async ({ id, res }) => {
   });
 };
 
-module.exports = { getAll, createUser, getUserById, updateUser, deleteUser };
+module.exports = {
+  getAll,
+  createUser,
+  getUserById,
+  updateUser,
+  deleteUser,
+  User
+};
