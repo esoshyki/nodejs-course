@@ -20,11 +20,12 @@ const userSchema = new mongoose.Schema(
   { versionKey: false }
 );
 
-userSchema.pre('save', async function save(next) {
+userSchema.pre('save', async function Save(next) {
   if (!this.isModified('password')) return next();
   try {
     const salt = await bcrypt.genSalt(saltRounds);
     this.password = await bcrypt.hash(this.password, salt);
+    console.log(this.password);
     return next();
   } catch (err) {
     return next(err);
@@ -32,8 +33,6 @@ userSchema.pre('save', async function save(next) {
 });
 
 userSchema.methods.validatePassword = async function validate(data, callback) {
-  console.log(data);
-  console.log(this.password);
   bcrypt.compare(data, this.password, (err, res) => {
     if (err) {
       throw err;
@@ -68,6 +67,24 @@ const createUser = async ({ userData, res }) => {
     console.log(product ? toResponse(product) : product);
     return res.status(200).json(toResponse(product));
   });
+};
+
+const getUserByLogin = async login => {
+  let user;
+  await User.findOne({ login }, (err, result) => {
+    if (result) {
+      user = result;
+    }
+  });
+  return user;
+};
+
+const validatePass = async ({ serverPassword, clienPassword }) => {
+  let isValid = false;
+  await bcrypt.compare(clienPassword, serverPassword).then(res => {
+    isValid = res;
+  });
+  return isValid;
 };
 
 const getUserById = async ({ id, res }) => {
@@ -120,5 +137,6 @@ module.exports = {
   getUserById,
   updateUser,
   deleteUser,
-  User
+  getUserByLogin,
+  validatePass
 };
